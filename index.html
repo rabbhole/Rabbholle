@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyANjjat_Sg9bSERTZ_BVC1FlD12Cc5ywHY",
+  authDomain: "rabbhole-2b31c.firebaseapp.com",
+  projectId: "rabbhole-2b31c",
+  storageBucket: "rabbhole-2b31c.firebasestorage.app",
+  messagingSenderId: "373221617574",
+  appId: "1:373221617574:web:8e398d138fe5fa2728e967",
+  measurementId: "G-4KJ6P758TD"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
     <h1>Witamy w Norze Królika</h1>
     <p>Wybierz skarb i odkryj jego tajemnicę!</p>
     <ul>
