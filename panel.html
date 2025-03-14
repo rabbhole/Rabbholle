@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Operatora</title>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "TWOJ-API-KEY",
+            authDomain: "TWOJ-PROJEKT.firebaseapp.com",
+            databaseURL: "https://TWOJ-PROJEKT.firebaseio.com",
+            projectId: "TWOJ-PROJEKT",
+            storageBucket: "TWOJ-PROJEKT.appspot.com",
+            messagingSenderId: "TWOJ-SENDER-ID",
+            appId: "TWOJ-APP-ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        
+        document.getElementById("dodajSkarb").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const nazwa = document.getElementById("nazwa").value;
+            const opis = document.getElementById("opis").value;
+            const link = document.getElementById("link").value;
+            
+            const skarbyRef = ref(db, 'skarby');
+            const nowySkarb = push(skarbyRef);
+            
+            set(nowySkarb, { nazwa, opis, link });
+            alert("Skarb dodany!");
+        });
+    </script>
+</head>
+<body>
+    <h1>Panel Operatora</h1>
+    <h2>Dodaj nowy skarb</h2>
+    <form id="dodajSkarb">
+        <input type="text" id="nazwa" placeholder="Nazwa skarbu" required><br>
+        <textarea id="opis" placeholder="Opis skarbu" required></textarea><br>
+        <input type="text" id="link" placeholder="Link GPS" required><br>
+        <button type="submit">Dodaj Skarb</button>
+    </form>
+</body>
+</html>
